@@ -1,0 +1,16 @@
+# Java
+target/
+.idea/
+*.iml
+
+# Visual Studio
+.vs/
+bin/
+obj/
+
+# Logs
+*.log
+
+# OS
+Thumbs.db
+.DS_Store

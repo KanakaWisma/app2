@@ -1,0 +1,140 @@
+﻿Public Class Form1
+
+    Private Type Student
+    End Type
+
+    Private Class StudentClass
+        Public Property Nama As String
+        Public Property Umur As String
+        Public Property NIM As String
+        Public Property TglLahir As String
+        Public Property Alamat As String
+        Public Property Jurusan As String
+        Public Property Fakultas As String
+        Public Property Jenjang As String
+
+        Public Overrides Function ToString() As String
+            Return String.Format("{0}    —    {1}", If(String.IsNullOrWhiteSpace(Nama), "[no name]", Nama), NIM)
+        End Function
+    End Class
+
+    Private students As New List(Of StudentClass)()
+
+    Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        ' seed sample data
+        students.Add(New StudentClass With {.Nama = "Budi", .NIM = "2021001"})
+        students.Add(New StudentClass With {.Nama = "Sari", .NIM = "2021002"})
+        students.Add(New StudentClass With {.Nama = "Tono", .NIM = "2021003"})
+
+        cmbJenjang.SelectedIndex = 0
+        RefreshList()
+    End Sub
+
+    Private Sub RefreshList(Optional filter As String = "")
+        lstStudents.BeginUpdate()
+        lstStudents.Items.Clear()
+        For Each s In students
+            Dim key = (s.Nama & " " & s.NIM).ToLower()
+            If String.IsNullOrWhiteSpace(filter) OrElse key.Contains(filter.ToLower()) Then
+                lstStudents.Items.Add(s)
+            End If
+        Next
+        lstStudents.EndUpdate()
+    End Sub
+
+    Private Sub ClearFields()
+        txtNama.Text = ""
+        txtUmur.Text = ""
+        txtNIM.Text = ""
+        txtTgl.Text = ""
+        txtAlamat.Text = ""
+        txtJurusan.Text = ""
+        txtFakultas.Text = ""
+        If cmbJenjang.Items.Count > 0 Then cmbJenjang.SelectedIndex = 0
+        lstStudents.ClearSelected()
+    End Sub
+
+    Private Sub btnSave_Click(sender As Object, e As EventArgs) Handles btnSave.Click
+        Dim s As New StudentClass With {
+            .Nama = txtNama.Text,
+            .Umur = txtUmur.Text,
+            .NIM = txtNIM.Text,
+            .TglLahir = txtTgl.Text,
+            .Alamat = txtAlamat.Text,
+            .Jurusan = txtJurusan.Text,
+            .Fakultas = txtFakultas.Text,
+            .Jenjang = If(cmbJenjang.SelectedItem IsNot Nothing, cmbJenjang.SelectedItem.ToString(), "")
+        }
+        students.Add(s)
+        RefreshList(txtSearch.Text)
+        lstStudents.SelectedIndex = lstStudents.Items.Count - 1
+    End Sub
+
+    Private Sub btnUpdate_Click(sender As Object, e As EventArgs) Handles btnUpdate.Click
+        Dim idx = lstStudents.SelectedIndex
+        If idx < 0 Then
+            MessageBox.Show("Select an item from the list first")
+            Return
+        End If
+        Dim s As StudentClass = CType(lstStudents.Items(idx), StudentClass)
+        s.Nama = txtNama.Text
+        s.Umur = txtUmur.Text
+        s.NIM = txtNIM.Text
+        s.TglLahir = txtTgl.Text
+        s.Alamat = txtAlamat.Text
+        s.Jurusan = txtJurusan.Text
+        s.Fakultas = txtFakultas.Text
+        s.Jenjang = If(cmbJenjang.SelectedItem IsNot Nothing, cmbJenjang.SelectedItem.ToString(), "")
+        RefreshList(txtSearch.Text)
+        ' re-select
+        For i As Integer = 0 To lstStudents.Items.Count - 1
+            If lstStudents.Items(i) Is s Then
+                lstStudents.SelectedIndex = i
+                Exit For
+            End If
+        Next
+    End Sub
+
+    Private Sub btnDelete_Click(sender As Object, e As EventArgs) Handles btnDelete.Click
+        Dim idx = lstStudents.SelectedIndex
+        If idx < 0 Then
+            MessageBox.Show("Select an item from the list first")
+            Return
+        End If
+        Dim s As StudentClass = CType(lstStudents.Items(idx), StudentClass)
+        students.Remove(s)
+        RefreshList(txtSearch.Text)
+        ClearFields()
+    End Sub
+
+    Private Sub btnReset_Click(sender As Object, e As EventArgs) Handles btnReset.Click
+        ClearFields()
+    End Sub
+
+    Private Sub lstStudents_SelectedIndexChanged(sender As Object, e As EventArgs) Handles lstStudents.SelectedIndexChanged
+        Dim idx = lstStudents.SelectedIndex
+        If idx < 0 Then Return
+        Dim s As StudentClass = CType(lstStudents.Items(idx), StudentClass)
+        txtNama.Text = s.Nama
+        txtUmur.Text = s.Umur
+        txtNIM.Text = s.NIM
+        txtTgl.Text = s.TglLahir
+        txtAlamat.Text = s.Alamat
+        txtJurusan.Text = s.Jurusan
+        txtFakultas.Text = s.Fakultas
+        If Not String.IsNullOrEmpty(s.Jenjang) Then
+            Dim i = cmbJenjang.FindStringExact(s.Jenjang)
+            If i >= 0 Then cmbJenjang.SelectedIndex = i
+        End If
+    End Sub
+
+    Private Sub txtSearch_TextChanged(sender As Object, e As EventArgs) Handles txtSearch.TextChanged
+        RefreshList(txtSearch.Text)
+    End Sub
+
+    Private Sub btnSearch_Click(sender As Object, e As EventArgs) Handles btnSearch.Click
+        RefreshList(txtSearch.Text)
+    End Sub
+
+End Class
+
