@@ -52,6 +52,7 @@ Partial Class Form1
         Me.btnSave = New System.Windows.Forms.Button()
         Me.btnDelete = New System.Windows.Forms.Button()
         Me.DateTimePicker1 = New System.Windows.Forms.DateTimePicker()
+        Me.cmbJurusan = New System.Windows.Forms.ComboBox()
         Me.pnlFrame.SuspendLayout()
         Me.pnlContent.SuspendLayout()
         Me.pnlLeft.SuspendLayout()
@@ -79,7 +80,7 @@ Partial Class Form1
         Me.lblHeader.Name = "lblHeader"
         Me.lblHeader.Size = New System.Drawing.Size(762, 56)
         Me.lblHeader.TabIndex = 0
-        Me.lblHeader.Text = "Judul Form"
+        Me.lblHeader.Text = "Informasi Mahasiswa"
         Me.lblHeader.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'pnlContent
@@ -386,4 +387,5 @@ Partial Class Form1
     Friend WithEvents btnSave As System.Windows.Forms.Button
     Friend WithEvents btnDelete As System.Windows.Forms.Button
     Friend WithEvents DateTimePicker1 As DateTimePicker
+    Friend WithEvents cmbJurusan As ComboBox
 End Class
