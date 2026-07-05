@@ -1,4 +1,4 @@
-# Aplikasi Kedua - Manajemen Data Mahasiswa
+# Aplikasi Kedua
 
 ## Deskripsi
 
