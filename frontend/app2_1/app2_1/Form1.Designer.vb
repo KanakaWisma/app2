@@ -26,6 +26,8 @@ Partial Class Form1
         Me.lblHeader = New System.Windows.Forms.Label()
         Me.pnlContent = New System.Windows.Forms.Panel()
         Me.pnlLeft = New System.Windows.Forms.Panel()
+        Me.cmbJurusan = New System.Windows.Forms.ComboBox()
+        Me.DateTimePicker1 = New System.Windows.Forms.DateTimePicker()
         Me.lblNama = New System.Windows.Forms.Label()
         Me.txtNama = New System.Windows.Forms.TextBox()
         Me.lblUmur = New System.Windows.Forms.Label()
@@ -36,7 +38,6 @@ Partial Class Form1
         Me.lblAlamat = New System.Windows.Forms.Label()
         Me.txtAlamat = New System.Windows.Forms.TextBox()
         Me.lblJurusan = New System.Windows.Forms.Label()
-        Me.txtJurusan = New System.Windows.Forms.TextBox()
         Me.lblFakultas = New System.Windows.Forms.Label()
         Me.txtFakultas = New System.Windows.Forms.TextBox()
         Me.lblJenjang = New System.Windows.Forms.Label()
@@ -51,8 +52,6 @@ Partial Class Form1
         Me.btnUpdate = New System.Windows.Forms.Button()
         Me.btnSave = New System.Windows.Forms.Button()
         Me.btnDelete = New System.Windows.Forms.Button()
-        Me.DateTimePicker1 = New System.Windows.Forms.DateTimePicker()
-        Me.cmbJurusan = New System.Windows.Forms.ComboBox()
         Me.pnlFrame.SuspendLayout()
         Me.pnlContent.SuspendLayout()
         Me.pnlLeft.SuspendLayout()
@@ -94,6 +93,7 @@ Partial Class Form1
         '
         'pnlLeft
         '
+        Me.pnlLeft.Controls.Add(Me.cmbJurusan)
         Me.pnlLeft.Controls.Add(Me.DateTimePicker1)
         Me.pnlLeft.Controls.Add(Me.lblNama)
         Me.pnlLeft.Controls.Add(Me.txtNama)
@@ -105,7 +105,6 @@ Partial Class Form1
         Me.pnlLeft.Controls.Add(Me.lblAlamat)
         Me.pnlLeft.Controls.Add(Me.txtAlamat)
         Me.pnlLeft.Controls.Add(Me.lblJurusan)
-        Me.pnlLeft.Controls.Add(Me.txtJurusan)
         Me.pnlLeft.Controls.Add(Me.lblFakultas)
         Me.pnlLeft.Controls.Add(Me.txtFakultas)
         Me.pnlLeft.Controls.Add(Me.lblJenjang)
@@ -114,6 +113,21 @@ Partial Class Form1
         Me.pnlLeft.Name = "pnlLeft"
         Me.pnlLeft.Size = New System.Drawing.Size(420, 376)
         Me.pnlLeft.TabIndex = 0
+        '
+        'cmbJurusan
+        '
+        Me.cmbJurusan.FormattingEnabled = True
+        Me.cmbJurusan.Location = New System.Drawing.Point(120, 214)
+        Me.cmbJurusan.Name = "cmbJurusan"
+        Me.cmbJurusan.Size = New System.Drawing.Size(233, 24)
+        Me.cmbJurusan.TabIndex = 17
+        '
+        'DateTimePicker1
+        '
+        Me.DateTimePicker1.Location = New System.Drawing.Point(120, 103)
+        Me.DateTimePicker1.Name = "DateTimePicker1"
+        Me.DateTimePicker1.Size = New System.Drawing.Size(200, 22)
+        Me.DateTimePicker1.TabIndex = 16
         '
         'lblNama
         '
@@ -197,13 +211,6 @@ Partial Class Form1
         Me.lblJurusan.Size = New System.Drawing.Size(60, 16)
         Me.lblJurusan.TabIndex = 10
         Me.lblJurusan.Text = "Jurusan :"
-        '
-        'txtJurusan
-        '
-        Me.txtJurusan.Location = New System.Drawing.Point(120, 216)
-        Me.txtJurusan.Name = "txtJurusan"
-        Me.txtJurusan.Size = New System.Drawing.Size(200, 22)
-        Me.txtJurusan.TabIndex = 11
         '
         'lblFakultas
         '
@@ -331,13 +338,6 @@ Partial Class Form1
         Me.btnDelete.Text = "Delete"
         Me.btnDelete.UseVisualStyleBackColor = True
         '
-        'DateTimePicker1
-        '
-        Me.DateTimePicker1.Location = New System.Drawing.Point(120, 103)
-        Me.DateTimePicker1.Name = "DateTimePicker1"
-        Me.DateTimePicker1.Size = New System.Drawing.Size(200, 22)
-        Me.DateTimePicker1.TabIndex = 16
-        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
@@ -373,7 +373,6 @@ Partial Class Form1
     Friend WithEvents lblAlamat As System.Windows.Forms.Label
     Friend WithEvents txtAlamat As System.Windows.Forms.TextBox
     Friend WithEvents lblJurusan As System.Windows.Forms.Label
-    Friend WithEvents txtJurusan As System.Windows.Forms.TextBox
     Friend WithEvents lblFakultas As System.Windows.Forms.Label
     Friend WithEvents txtFakultas As System.Windows.Forms.TextBox
     Friend WithEvents lblJenjang As System.Windows.Forms.Label

@@ -3,12 +3,12 @@
   "WorkspaceRootPath": "C:\\Users\\LOQ\\Documents\\MAGANG\\app2\\frontend\\app2_1\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{6903736C-46ED-4395-B94E-0ED887523D82}|app2_1\\app2_1.vbproj|C:\\Users\\LOQ\\Documents\\MAGANG\\app2\\frontend\\app2_1\\app2_1\\Mahasiswa.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}",
-      "RelativeMoniker": "D:0:0:{6903736C-46ED-4395-B94E-0ED887523D82}|app2_1\\app2_1.vbproj|solutionrelative:app2_1\\Mahasiswa.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{6903736C-46ED-4395-B94E-0ED887523D82}|app2_1\\app2_1.vbproj|C:\\Users\\LOQ\\Documents\\MAGANG\\app2\\frontend\\app2_1\\app2_1\\Form1.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}",
       "RelativeMoniker": "D:0:0:{6903736C-46ED-4395-B94E-0ED887523D82}|app2_1\\app2_1.vbproj|solutionrelative:app2_1\\Form1.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6903736C-46ED-4395-B94E-0ED887523D82}|app2_1\\app2_1.vbproj|C:\\Users\\LOQ\\Documents\\MAGANG\\app2\\frontend\\app2_1\\app2_1\\mahasiswa.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}",
+      "RelativeMoniker": "D:0:0:{6903736C-46ED-4395-B94E-0ED887523D82}|app2_1\\app2_1.vbproj|solutionrelative:app2_1\\mahasiswa.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{6903736C-46ED-4395-B94E-0ED887523D82}|app2_1\\app2_1.vbproj|C:\\Users\\LOQ\\Documents\\MAGANG\\app2\\frontend\\app2_1\\app2_1\\form1.designer.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}",
@@ -30,17 +30,17 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "Form1.vb",
               "DocumentMoniker": "C:\\Users\\LOQ\\Documents\\MAGANG\\app2\\frontend\\app2_1\\app2_1\\Form1.vb",
               "RelativeDocumentMoniker": "app2_1\\Form1.vb",
               "ToolTip": "C:\\Users\\LOQ\\Documents\\MAGANG\\app2\\frontend\\app2_1\\app2_1\\Form1.vb",
               "RelativeToolTip": "app2_1\\Form1.vb",
-              "ViewState": "AgIAAKkAAAAAAAAAAAAcwLUAAAAxAAAAAAAAAA==",
+              "ViewState": "AgIAABwAAAAAAAAAAAAwwCoAAAAvAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
               "WhenOpened": "2026-07-02T22:36:17.053Z",
               "IsPinned": true,
@@ -48,13 +48,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "Mahasiswa.vb",
               "DocumentMoniker": "C:\\Users\\LOQ\\Documents\\MAGANG\\app2\\frontend\\app2_1\\app2_1\\Mahasiswa.vb",
               "RelativeDocumentMoniker": "app2_1\\Mahasiswa.vb",
               "ToolTip": "C:\\Users\\LOQ\\Documents\\MAGANG\\app2\\frontend\\app2_1\\app2_1\\Mahasiswa.vb",
               "RelativeToolTip": "app2_1\\Mahasiswa.vb",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAJAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAuwAgAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
               "WhenOpened": "2026-07-02T22:43:33.157Z",
               "EditorCaption": ""
@@ -67,7 +67,7 @@
               "RelativeDocumentMoniker": "app2_1\\Form1.Designer.vb",
               "ToolTip": "C:\\Users\\LOQ\\Documents\\MAGANG\\app2\\frontend\\app2_1\\app2_1\\Form1.Designer.vb",
               "RelativeToolTip": "app2_1\\Form1.Designer.vb",
-              "ViewState": "AgIAACEAAAAAAAAAAAAiwDUAAAA3AAAAAAAAAA==",
+              "ViewState": "AgIAAHYBAAAAAAAAAIAwwHkBAAAvAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
               "WhenOpened": "2026-07-02T22:34:55.623Z",
               "EditorCaption": ""
@@ -92,7 +92,7 @@
               "RelativeDocumentMoniker": "app2_1\\Jurusan.vb",
               "ToolTip": "C:\\Users\\LOQ\\Documents\\MAGANG\\app2\\frontend\\app2_1\\app2_1\\Jurusan.vb",
               "RelativeToolTip": "app2_1\\Jurusan.vb",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAbAAAAAAAAAA==",
+              "ViewState": "AgIAAAMAAAAAAAAAAAA1wAIAAAAbAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
               "WhenOpened": "2026-07-02T22:42:57.247Z",
               "EditorCaption": ""

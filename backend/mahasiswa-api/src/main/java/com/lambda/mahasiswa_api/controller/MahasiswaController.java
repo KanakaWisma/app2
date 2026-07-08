@@ -1,6 +1,8 @@
 package com.lambda.mahasiswa_api.controller;
 
+import com.lambda.mahasiswa_api.entity.Jurusan;
 import com.lambda.mahasiswa_api.entity.Mahasiswa;
+import com.lambda.mahasiswa_api.repository.JurusanRepository;
 import com.lambda.mahasiswa_api.repository.MahasiswaRepository;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,9 +13,11 @@ import java.util.List;
 public class MahasiswaController {
 
     private final MahasiswaRepository mahasiswaRepository;
+    private final JurusanRepository jurusanRepository;
 
-    public MahasiswaController(MahasiswaRepository mahasiswaRepository) {
+    public MahasiswaController(MahasiswaRepository mahasiswaRepository, JurusanRepository jurusanRepository) {
         this.mahasiswaRepository = mahasiswaRepository;
+        this.jurusanRepository = jurusanRepository;
     }
 
     @GetMapping
@@ -29,6 +33,10 @@ public class MahasiswaController {
 
     @PostMapping
     public Mahasiswa create(@RequestBody Mahasiswa mahasiswa) {
+        if (mahasiswa.getJurusan() != null && mahasiswa.getJurusan().getIdJurusan() != null) {
+            Jurusan jurusanAsli = jurusanRepository.findById(mahasiswa.getJurusan().getIdJurusan()).orElse(null);
+            mahasiswa.setJurusan(jurusanAsli);   
+        }
         return mahasiswaRepository.save(mahasiswa);
     }
 
@@ -46,6 +54,11 @@ public class MahasiswaController {
         mahasiswa.setTglLahir(mahasiswaBaru.getTglLahir());
         mahasiswa.setAlamat(mahasiswaBaru.getAlamat());
         mahasiswa.setJurusan(mahasiswaBaru.getJurusan());
+        
+        if (mahasiswaBaru.getJurusan() != null && mahasiswaBaru.getJurusan().getIdJurusan() != null) {
+            Jurusan jurusanAsli = jurusanRepository.findById(mahasiswaBaru.getJurusan().getIdJurusan()).orElse(null);
+            mahasiswa.setJurusan(jurusanAsli);
+        }
 
         return mahasiswaRepository.save(mahasiswa);
     }

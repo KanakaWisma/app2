@@ -31,45 +31,40 @@ Public Class Form1
 
     Private filteredMahasiswa As New List(Of Mahasiswa)
 
-    Private Sub dgvMahasiswa_SelectedIndexChanged(
-    sender As Object,
-    e As EventArgs
-) Handles dgvMahasiswa.SelectedIndexChanged
-
+    Private Sub dgvMahasiswa_SelectedIndexChanged(sender As Object, e As EventArgs) Handles dgvMahasiswa.SelectedIndexChanged
         If dgvMahasiswa.SelectedIndex < 0 Then Return
 
-        selectedMahasiswa =
-        filteredMahasiswa(dgvMahasiswa.SelectedIndex)
+        Try
+            selectedMahasiswa = filteredMahasiswa(dgvMahasiswa.SelectedIndex)
+            selectedId = selectedMahasiswa.id
 
-        selectedId = selectedMahasiswa.id
+            txtNama.Text = selectedMahasiswa.nama
+            txtUmur.Text = selectedMahasiswa.umur.ToString()
+            txtNIM.Text = selectedMahasiswa.nim
+            txtAlamat.Text = selectedMahasiswa.alamat
 
-        txtNama.Text = selectedMahasiswa.nama
-        txtUmur.Text = selectedMahasiswa.umur.ToString()
-        txtNIM.Text = selectedMahasiswa.nim
-        txtAlamat.Text = selectedMahasiswa.alamat
+            Try
+                DateTimePicker1.Value = selectedMahasiswa.tglLahir
+            Catch exDate As Exception
+                DateTimePicker1.Value = DateTime.Now
+            End Try
 
-        DateTimePicker1.Value =
-        DateTime.Parse(selectedMahasiswa.tglLahir)
+            If selectedMahasiswa.jurusan IsNot Nothing Then
+                For i As Integer = 0 To cmbJurusan.Items.Count - 1
+                    Dim j As Jurusan = CType(cmbJurusan.Items(i), Jurusan)
+                    If j.idJurusan = selectedMahasiswa.jurusan.idJurusan Then
+                        cmbJurusan.SelectedIndex = i
 
-        If selectedMahasiswa.jurusan IsNot Nothing Then
+                        Exit For
+                    End If
+                Next
+            Else
+                cmbJurusan.SelectedIndex = -1
+            End If
 
-            For i As Integer = 0 To cmbJurusan.Items.Count - 1
-
-                Dim j As Jurusan =
-            CType(cmbJurusan.Items(i), Jurusan)
-
-                If j.idJurusan =
-            selectedMahasiswa.jurusan.idJurusan Then
-
-                    cmbJurusan.SelectedIndex = i
-                    Exit For
-
-                End If
-
-            Next
-
-        End If
-
+        Catch ex As Exception
+            MessageBox.Show("Error pas nampilin data: " & ex.Message)
+        End Try
     End Sub
 
     Private Async Sub Form1_Load(
@@ -80,6 +75,16 @@ Public Class Form1
         Await LoadJurusan()
         Await LoadMahasiswa()
 
+    End Sub
+
+    Private Sub cmbJurusan_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbJurusan.SelectedIndexChanged
+
+        Dim selectedJurusan As Jurusan = TryCast(cmbJurusan.SelectedItem, Jurusan)
+
+        If selectedJurusan IsNot Nothing Then
+            txtFakultas.Text = selectedJurusan.fakultas
+            cmbJenjang.Text = selectedJurusan.jenjang
+        End If
     End Sub
 
     Private Async Function LoadMahasiswa() As Task
@@ -116,21 +121,33 @@ New List(Of Mahasiswa)(mahasiswaList)
 
     Private Async Function LoadJurusan() As Task
 
-        Dim json As String =
+        Try
+
+            Dim json As String =
         Await client.GetStringAsync(
             baseUrl & "/jurusan")
 
-        jurusanList =
-        JsonConvert.DeserializeObject(
-            Of List(Of Jurusan))(json)
+            jurusanList =
+            JsonConvert.DeserializeObject(
+                Of List(Of Jurusan))(json)
 
-        cmbJurusan.Items.Clear()
+            cmbJurusan.Items.Clear()
 
-        For Each j In jurusanList
+            For Each j In jurusanList
 
-            cmbJurusan.Items.Add(j)
+                cmbJurusan.Items.Add(j)
 
-        Next
+            Next
+
+            If cmbJurusan.Items.Count > 0 Then
+                cmbJurusan.SelectedIndex = 0
+            End If
+
+        Catch ex As Exception
+
+            MessageBox.Show(ex.ToString())
+
+        End Try
 
     End Function
 
